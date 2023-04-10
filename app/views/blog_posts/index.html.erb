@@ -6,7 +6,13 @@
 
 <% @blog_posts.each do |blog_post| %>
     <div>
-        <h2><%= link_to blog_post.title, blog_post %></h2>
+        <h3><%= link_to blog_post.title, blog_post %></h3>
+        <%if blog_post.draft?%>
+        <div class="p-2 rounded bg-gray-300">Draft</div>
+        <%end%>
+        <%if blog_post.scheduled?%>
+        <div class="p-2 rounded bg-blue-300">Scheduled</div>
+        <%end%>
         <p><%= blog_post.body %></p>
     </div>
 <% end %>
